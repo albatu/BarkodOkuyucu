@@ -1,0 +1,33 @@
+﻿@page "/"
+@using ZXingBlazor.Components
+
+<div class="row" style="height:350px">
+    <BarcodeReader ScanResult="ScanResult" ResetBtnTitle="İptal"
+                   CloseBtnTitle="Kapat" ScanBtnTitle="Tara" Close="args=>Kapat(args)"
+                   SelectDeviceBtnTitle="Cihaz Seç" ShowScanBarcode="ShowScanBarcode" DecodeAllFormats="true"
+                   Decodeonce="true" Result="result" />
+</div>
+<div class="row">
+
+    <h1 style="margin-top:1000px">Okunan Barkod: @BarCode</h1>
+</div>
+
+@code {
+
+
+    public string BarCode { get; set; }
+    public bool ShowScanBarcode { get; set; } = true;
+
+    private void ScanResult(string e)
+    {
+        BarCode = null;
+        StateHasChanged();
+        BarCode = e;
+        StateHasChanged();
+
+    }
+    void Kapat(dynamic dynamic)
+    {
+        
+    }
+}
